@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace YazGelLab1
 {
-    
+
 
     public partial class Form1 : Form
     {
@@ -33,7 +33,7 @@ namespace YazGelLab1
 
         public class DersSaatleri
         {
-           
+
         }
 
 
@@ -57,7 +57,7 @@ namespace YazGelLab1
 
                     while (reader.Read())
                     {
-                        string row = ""; // Her bir satır için yeni bir dize oluşturuyoruz
+                        string row = ""; // r bir satır için yeni bir dize oluşturuyoruz
 
                         // Tüm sütunları sırayla alıp row stringine ekliyoruz
                         for (int i = 0; i < reader.FieldCount; i++)
@@ -74,27 +74,93 @@ namespace YazGelLab1
 
                     reader.Close();
                 }
+                //connection.Close();
+            }
+
+            // Data grid viewe sql tablo sorgusunu çekme 
+            string query2 = @"
+                WITH GunlerSiralama AS (
+    SELECT 
+        Gun,
+        ROW_NUMBER() OVER (ORDER BY 
+            CASE Gun
+                WHEN 'Pazartesi' THEN 1
+                WHEN 'Sali' THEN 2
+                WHEN 'Çarşamba' THEN 3
+                WHEN 'Perşembe' THEN 4
+                WHEN 'Cuma' THEN 5
+                ELSE 6
+            END
+        ) AS GunSirasi
+    FROM (
+        SELECT DISTINCT Gun FROM DersProgrami
+    ) AS Gunler
+)
+
+SELECT 
+    GunlerSiralama.Gun,
+    Saatler.Saat,
+    TblDersler.dersad AS DersAdi,
+    TblOgretmen.ad + ' ' + TblOgretmen.soyad AS OgretmenAdSoyad,
+    TblSiniflar.sinifad AS SinifAdi
+FROM 
+    GunlerSiralama
+CROSS JOIN
+    (VALUES ('09:00'), ('10:00'), ('11:00'), ('12:00'), ('13:00'), ('14:00'), ('15:00'), ('16:00')) AS Saatler(Saat)
+LEFT JOIN 
+    DersProgrami ON GunlerSiralama.Gun = DersProgrami.Gun AND Saatler.Saat = CONVERT(VARCHAR(5), DersProgrami.Saat, 108)
+LEFT JOIN 
+    TblDersler ON DersProgrami.dersno = TblDersler.dersno
+LEFT JOIN 
+    TblOgretmen ON DersProgrami.sicilno = TblOgretmen.sicilno
+LEFT JOIN 
+    TblSiniflar ON DersProgrami.sinifno = TblSiniflar.sinifno
+ORDER BY 
+    GunlerSiralama.GunSirasi, Saatler.Saat;
+
+            ";
+
+            SqlCommand command2 = new SqlCommand(query2, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command2);
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                
+                adapter.Fill(dataTable);
+
+                // DataGridView'e verileri yükleme
+                dataGridView1.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veri yüklenirken hata oluştu: " + ex.Message);
+            }
+            finally
+            {
                 connection.Close();
             }
 
             // DataGridView'e satırlar ekleme
             dataGridView1.RowHeadersVisible = true;
+            //dataGridView1.Rows.Add("", "", "", "", ""); // Satır eklemek için her gün için boş sütunlar ekledik
+            //dataGridView1.Rows.Add("", "", "", "", "");
+            //dataGridView1.Rows.Add("", "", "", "", "");
+            //dataGridView1.Rows.Add("", "", "", "", "");
+            //dataGridView1.Rows.Add("", "", "", "", "");
+            //dataGridView1.Rows.Add("", "", "", "", "");
+            //dataGridView1.Rows.Add("", "", "", "", "");
+            //dataGridView1.Rows[0].HeaderCell.Value = "09:00";
+            //dataGridView1.Rows[1].HeaderCell.Value = "10:00";
+            //dataGridView1.Rows[2].HeaderCell.Value = "11:00";
+            //dataGridView1.Rows[3].HeaderCell.Value = "12:00";
+            //dataGridView1.Rows[4].HeaderCell.Value = "13:00";
+            //dataGridView1.Rows[5].HeaderCell.Value = "14:00";
+            //dataGridView1.Rows[6].HeaderCell.Value = "15:00";
+            //dataGridView1.Rows[7].HeaderCell.Value = "16:00";
 
-            dataGridView1.Rows.Add("", "", "", "", ""); // Satır eklemek için her gün için boş sütunlar ekledik
-            dataGridView1.Rows.Add("", "", "", "", "");
-            dataGridView1.Rows.Add("", "", "", "", "");
-            dataGridView1.Rows.Add("", "", "", "", "");
-            dataGridView1.Rows.Add("", "", "", "", "");
-            dataGridView1.Rows.Add("", "", "", "", "");
-            dataGridView1.Rows.Add("", "", "", "", "");
-            dataGridView1.Rows[0].HeaderCell.Value = "09:00";
-            dataGridView1.Rows[1].HeaderCell.Value = "10:00";
-            dataGridView1.Rows[2].HeaderCell.Value = "11:00";
-            dataGridView1.Rows[3].HeaderCell.Value = "12:00";
-            dataGridView1.Rows[4].HeaderCell.Value = "13:00";
-            dataGridView1.Rows[5].HeaderCell.Value = "14:00";
-            dataGridView1.Rows[6].HeaderCell.Value = "15:00";
-            dataGridView1.Rows[7].HeaderCell.Value = "16:00";
+            // Row başlıklarını gözükür yapma ve row autoSize eklentisi
+            dataGridView1.RowHeadersVisible = true;
             dataGridView1.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
 
 
