@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace YazGelLab1
 {
@@ -18,23 +19,103 @@ namespace YazGelLab1
         SqlConnection connection;
         public Form1()
         {
+            
             InitializeComponent();
+
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
-        public class SQLConnection
+        private void RenklendirmeAlgoritmasi(List<Ders> dersler)
         {
+            // Çakışma var mı kontrol etmek için iki dersin çakışıp çakışmadığını kontrol eden bir metot
+            bool CakismaVarMi(Ders ders1, Ders ders2)
+            {
+                if (ders1.DersinSaati.SaatDegeri == ders2.DersinSaati.SaatDegeri &&
+                    ders1.DersinSinifi.SinifAdi == ders2.DersinSinifi.SinifAdi &&
+                    ders1.DersinOgretmeni.Ad == ders2.DersinOgretmeni.Ad)
+                {
+                    return true; // Çakışma var
+                }
+                return false; // Çakışma yok
+            }
 
+            // Çakışma kontrolü
+            for (int i = 0; i < dersler.Count; i++)
+            {
+                for (int j = i + 1; j < dersler.Count; j++)
+                {
+                    if (CakismaVarMi(dersler[i], dersler[j]))
+                    {
+                        // Çakışma var, label2'yi güncelle
+                        label3.Text = "Çakışma var";
+                        return; // Çakışma olduğu için işlemi sonlandır
+                    }
+                }
+            }
+
+            // Eğer hiç çakışma yoksa label2'yi güncelle
+            label3.Text = "Çakışma yok";
         }
 
-        public class DersSaatleri
-        {
 
+        public class Ders
+        {
+            public string DersAdi { get; set; }
+            public Ogretmen DersinOgretmeni { get; set; }
+            public Sinif DersinSinifi { get; set; }
+            public Saat DersinSaati { get; set; }
+
+            public Ders(string dersAdi, Ogretmen dersinOgretmeni, Sinif dersinSinifi, Saat dersinSaati)
+            {
+                DersAdi = dersAdi;
+                DersinOgretmeni = dersinOgretmeni;
+                DersinSinifi = dersinSinifi;
+                DersinSaati = dersinSaati;
+            }
         }
+
+        public class Saat
+        {
+            public string SaatDegeri { get; set; }
+
+            public Saat(string saatDegeri)
+            {
+                SaatDegeri = saatDegeri;
+            }
+        }
+
+        public class Sinif
+        {
+            public string SinifAdi { get; set; }
+
+            public Sinif(string sinifAdi)
+            {
+                SinifAdi = sinifAdi;
+            }
+        }
+
+
+        public class Ogretmen
+        {
+            public string Ad { get; set; }
+
+            public Ogretmen(string ad)
+            {
+                Ad = ad;
+            }
+        }
+
+
+        
+
+        
+
+
+
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -120,46 +201,28 @@ ORDER BY
 
             ";
 
-            SqlCommand command2 = new SqlCommand(query2, connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command2);
-            DataTable dataTable = new DataTable();
+            //SqlCommand command2 = new SqlCommand(query2, connection);
+            //SqlDataAdapter adapter = new SqlDataAdapter(command2);
+            //DataTable dataTable = new DataTable();
 
-            try
-            {
+            //try
+            //{
                 
-                adapter.Fill(dataTable);
+            //    adapter.Fill(dataTable);
 
-                // DataGridView'e verileri yükleme
-                dataGridView1.DataSource = dataTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Veri yüklenirken hata oluştu: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            //    // DataGridView'e verileri yükleme
+            //    dataGridView1.DataSource = dataTable;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Veri yüklenirken hata oluştu: " + ex.Message);
+            //}
+            //finally
+            //{
+            //    connection.Close();
+            //}
 
-            // DataGridView'e satırlar ekleme
-            dataGridView1.RowHeadersVisible = true;
-            //dataGridView1.Rows.Add("", "", "", "", ""); // Satır eklemek için her gün için boş sütunlar ekledik
-            //dataGridView1.Rows.Add("", "", "", "", "");
-            //dataGridView1.Rows.Add("", "", "", "", "");
-            //dataGridView1.Rows.Add("", "", "", "", "");
-            //dataGridView1.Rows.Add("", "", "", "", "");
-            //dataGridView1.Rows.Add("", "", "", "", "");
-            //dataGridView1.Rows.Add("", "", "", "", "");
-            //dataGridView1.Rows[0].HeaderCell.Value = "09:00";
-            //dataGridView1.Rows[1].HeaderCell.Value = "10:00";
-            //dataGridView1.Rows[2].HeaderCell.Value = "11:00";
-            //dataGridView1.Rows[3].HeaderCell.Value = "12:00";
-            //dataGridView1.Rows[4].HeaderCell.Value = "13:00";
-            //dataGridView1.Rows[5].HeaderCell.Value = "14:00";
-            //dataGridView1.Rows[6].HeaderCell.Value = "15:00";
-            //dataGridView1.Rows[7].HeaderCell.Value = "16:00";
-
-            // Row başlıklarını gözükür yapma ve row autoSize eklentisi
+            
             dataGridView1.RowHeadersVisible = true;
             dataGridView1.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
 
@@ -169,6 +232,39 @@ ORDER BY
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // Ders, Ogretmen, Sinif ve Saat nesnelerini oluşturalım
+            Ogretmen ogretmen1 = new Ogretmen("Öğretmen 1");
+            Ogretmen ogretmen2 = new Ogretmen("Öğretmen 2");
+            Ogretmen ogretmen3 = new Ogretmen("Öğretmen 3");
+
+            Saat saat1 = new Saat("09:00");
+            Saat saat2 = new Saat("10:00");
+            Saat saat3 = new Saat("11:00");
+
+            Sinif sinif1 = new Sinif("Sınıf A");
+            Sinif sinif2 = new Sinif("Sınıf B");
+            Sinif sinif3 = new Sinif("Sınıf C");
+
+
+            // Ders örnekleri oluşturalım ve önceki öğretmen, sınıf ve saat nesnelerini kullanarak bu derslere atayalım
+            Ders ders1 = new Ders("Matematik", ogretmen1, sinif1, saat1);
+            Ders ders2 = new Ders("Fizik", ogretmen2, sinif2, saat2);
+            Ders ders3 = new Ders("Kimya", ogretmen3, sinif3, saat3);
+            Ders ders4 = new Ders("Kimya", ogretmen2, sinif2, saat2);
+
+
+            // Dersleri bir liste içinde toplayalım
+            List<Ders> dersler = new List<Ders>();
+            dersler.Add(ders1);
+            dersler.Add(ders2);
+            dersler.Add(ders3);
+            dersler.Add(ders4);
+
+            RenklendirmeAlgoritmasi(dersler);
         }
     }
 }
