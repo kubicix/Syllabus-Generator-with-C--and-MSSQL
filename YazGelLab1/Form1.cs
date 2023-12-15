@@ -125,45 +125,37 @@ namespace YazGelLab1
             }
         }
 
-        // Çakışma kontrolü için algoritma
         void CheckConflicts(Graph graph)
         {
             bool conflict = false;
 
             foreach (Node node in graph.Nodes)
             {
-                int dersAdiCount = 0;
-                int ogretmenCount = 0;
-                int sinifCount = 0;
-                int saatCount = 0;
+                HashSet<string> checkedNodes = new HashSet<string>(); // Kontrol edilen düğümleri saklamak için bir küme
 
                 foreach (Edge edge in node.Neighbors)
                 {
                     Node neighborNode = edge.Source == node ? edge.Target : edge.Source;
 
-                    if (node.DersAdi == neighborNode.DersAdi)
-                        dersAdiCount++;
+                    string key = $"{neighborNode.Ogretmen}-{neighborNode.Saat}-{neighborNode.Sinif}"; // Öğretmen, saat ve sınıfı birleştirerek bir anahtar oluştur
 
-                    if (node.Ogretmen == neighborNode.Ogretmen)
-                        ogretmenCount++;
+                    if (checkedNodes.Contains(key))
+                    {
+                        conflict = true;
+                        break;
+                    }
 
-                    if (node.Sinif == neighborNode.Sinif)
-                        sinifCount++;
-
-                    if (node.Saat == neighborNode.Saat)
-                        saatCount++;
+                    checkedNodes.Add(key);
                 }
 
-                if (dersAdiCount > 0 || ogretmenCount > 1 || sinifCount > 1 || saatCount > 1)
-                {
-                    conflict = true;
+                if (conflict)
                     break;
-                }
             }
 
             // Çakışma durumuna göre label3'ü güncelle
             label3.Text = conflict ? "Çakışma var" : "Çakışma yok";
         }
+
 
 
 
@@ -359,9 +351,9 @@ ORDER BY
 
             // Ders örnekleri oluşturalım ve önceki öğretmen, sınıf ve saat nesnelerini kullanarak bu derslere atayalım
             Ders ders1 = new Ders("Matematik", "ogretmen1", "sinif1", "saat1");
-            Ders ders2 = new Ders("Matematik3", "ogretmen1", "sinif1", "saat1");
-            Ders ders3 = new Ders("Matematik4", "ogretmen1", "sinif1", "saat1");
-            Ders ders4 = new Ders("Matematik2", "ogretmen1", "sinif1", "saat1");
+            Ders ders2 = new Ders("Matematik", "ogretmen1", "sinif2", "saat1");
+            Ders ders3 = new Ders("Matematik4", "ogretmen1", "sinif1", "saat2");
+            Ders ders4 = new Ders("Matematik2", "ogretmen1", "sinif2", "saat1");
 
 
             // Dersleri bir liste içinde toplayalım
