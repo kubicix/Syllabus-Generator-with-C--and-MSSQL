@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 using System.Xml.Linq;
 using static YazGelLab1.Form1;
+using MySql.Data.MySqlClient;
 
 namespace YazGelLab1
 {
@@ -24,7 +25,6 @@ namespace YazGelLab1
         {
             
             InitializeComponent();
-
 
         }
 
@@ -170,73 +170,12 @@ namespace YazGelLab1
             }
         }
 
-        //public class Saat
-        //{
-        //    public string SaatDegeri { get; set; }
-
-        //    public Saat(string saatDegeri)
-        //    {
-        //        SaatDegeri = saatDegeri;
-        //    }
-        //}
-
-        //public class Sinif
-        //{
-        //    public string SinifAdi { get; set; }
-
-        //    public Sinif(string sinifAdi)
-        //    {
-        //        SinifAdi = sinifAdi;
-        //    }
-        //}
-
-
-        //public class Ogretmen
-        //{
-        //    public string Ad { get; set; }
-
-        //    public Ogretmen(string ad)
-        //    {
-        //        Ad = ad;
-        //    }
-        //}
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-BDSUH1M\\SQLEXPRESS;Initial Catalog=DbYazlab;Integrated Security=True";
 
-            // SqlConnection oluşturma ve bağlantıyı açma
-            connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            
-
-            // Data grid viewe sql tablo sorgusunu çekme 
-            // Sql sorgusu buraya girilecek
             string query2 = @"";
-
-            //SqlCommand command2 = new SqlCommand(query2, connection);
-            //SqlDataAdapter adapter = new SqlDataAdapter(command2);
-            //DataTable dataTable = new DataTable();
-
-            //try
-            //{
-                
-            //    adapter.Fill(dataTable);
-
-            //    // DataGridView'e verileri yükleme
-            //    dataGridView1.DataSource = dataTable;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Veri yüklenirken hata oluştu: " + ex.Message);
-            //}
-            //finally
-            //{
-            //    connection.Close();
-            //}
-
-            
+          
             dataGridView1.RowHeadersVisible = true;
             dataGridView1.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
 
@@ -248,41 +187,20 @@ namespace YazGelLab1
 
         }
 
+
         private void button6_Click(object sender, EventArgs e)
         {
-            // Ders, Ogretmen, Sinif ve Saat nesnelerini oluşturalım
-            //Ogretmen ogretmen1 = new Ogretmen("Öğretmen 1");
-            //Ogretmen ogretmen2 = new Ogretmen("Öğretmen 2");
-            //Ogretmen ogretmen3 = new Ogretmen("Öğretmen 3");
-
-            //Saat saat1 = new Saat("09:00");
-            //Saat saat2 = new Saat("10:00");
-            //Saat saat3 = new Saat("11:00");
-
-            //Sinif sinif1 = new Sinif("Sınıf A");
-            //Sinif sinif2 = new Sinif("Sınıf B");
-            //Sinif sinif3 = new Sinif("Sınıf C");
-
-            //manuel input kısmı old vers
-            //Ders ders2 = new Ders("Matematik2", "ogretmen1", "sinif2", "saat1", "gun1");
-            //Ders ders3 = new Ders("Matematik4", "ogretmen1", "sinif1", "saat2", "gun1");
-            //Ders ders4 = new Ders("Matematik2", "ogretmen1", "sinif2", "saat2", "gun1");
+           
 
             // Ders örnekleri oluşturalım ve önceki öğretmen, sınıf ve saat nesnelerini kullanarak bu derslere atayalım
             Ders ders1 = new Ders(txders1.Text, ogrt1.Text, sinif1.Text, saat1.Text,gun1.Text);
             Ders ders2 = new Ders(txders2.Text, ogrt2.Text, sinif2.Text, saat2.Text, gun2.Text);
-            //Ders ders3 = new Ders(txders3.Text, ogrt3.Text, sinif3.Text, saat3.Text, gun3.Text);
-            //Ders ders4 = new Ders(txders4.Text, ogrt4.Text, sinif4.Text, saat4.Text, gun4.Text);
-            //Ders ders5 = new Ders(txders5.Text, ogrt5.Text, sinif5.Text, saat5.Text, gun5.Text);
 
 
             // Dersleri bir liste içinde toplamakodu
             List<Ders> dersler = new List<Ders>();
             dersler.Add(ders1);
             dersler.Add(ders2);
-            //dersler.Add(ders3);
-            //dersler.Add(ders4);
-            //dersler.Add(ders5);
 
             Graph graph= new Graph();
 
@@ -316,9 +234,6 @@ namespace YazGelLab1
             listBox1.Items.Clear();
             listBox1.Items.Add(graph.Nodes[0].DersAdi);
             listBox1.Items.Add(graph.Nodes[1].DersAdi);
-            //listBox1.Items.Add(graph.Nodes[2].DersAdi);
-            //listBox1.Items.Add(graph.Nodes[3].DersAdi);
-            //listBox1.Items.Add(graph.Nodes[4].DersAdi);
             graph.Clear();
             dersler.Clear();
         }
@@ -331,6 +246,66 @@ namespace YazGelLab1
         private void button2_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void txders1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Formdaki verileri al
+            string dersAdi = txders1.Text;
+            string ogretmen = ogrt1.Text;
+            string sinif = sinif1.Text;
+            string saat = saat1.Text;
+            string gun = gun1.Text;
+
+            // Veritabanı bağlantısı oluştur
+            string connectionString = "Server=localhost;Database=program;Uid=root;Pwd=qwertyu10;";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Çakışma kontrolü için graph kullanıldığı varsayıldı
+                    Graph graph = new Graph();
+                    // ... Graph üzerinden çakışma kontrolü yapılır (mevcut kodunuz)
+
+
+
+                    // Çakışma yoksa veritabanına kayıt ekle
+                    if (label3.Text == "Çakışma yok")
+                    {
+                        string insertQuery = "INSERT INTO dersprogrami (DersAdi, Ogretmen, Sinif, Saat, Gun) VALUES (@DersAdi, @Ogretmen, @Sinif, @Saat, @Gun)";
+                        MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                        insertCommand.Parameters.AddWithValue("@DersAdi", dersAdi);
+                        insertCommand.Parameters.AddWithValue("@Ogretmen", ogretmen);
+                        insertCommand.Parameters.AddWithValue("@Sinif", sinif);
+                        insertCommand.Parameters.AddWithValue("@Saat", saat);
+                        insertCommand.Parameters.AddWithValue("@Gun", gun);
+
+                        insertCommand.ExecuteNonQuery();
+
+                        MessageBox.Show("Veri başarıyla eklendi!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Çakışma var, veri eklenemedi!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("İşlem sırasında hata oluştu: " + ex.Message);
+                }
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
