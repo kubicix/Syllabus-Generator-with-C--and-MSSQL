@@ -120,7 +120,7 @@ namespace YazGelLab1
 
                 string key = $"{node.Saat}-{node.Sinif}-{node.Gun}"; // Saat, sınıf ve günü birleştirerek bir anahtar oluştur
 
-                if (checkedNodes.Contains(key) || checkedTeachers.Contains(node.Ogretmen))
+                if (checkedNodes.Contains(key) && checkedTeachers.Contains(node.Ogretmen))
                 {
                     conflict = true;
                     break;
@@ -149,6 +149,7 @@ namespace YazGelLab1
             // Çakışma durumuna göre label3'ü güncelle
             label3.Text = conflict ? "Çakışma var" : "Çakışma yok";
         }
+
 
 
         public class Ders
