@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ekleBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,39 +50,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.gun1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.gun2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.ogrt2 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txders2 = new System.Windows.Forms.TextBox();
-            this.gun3 = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.ogrt3 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txders3 = new System.Windows.Forms.TextBox();
-            this.gun4 = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.ogrt4 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txders4 = new System.Windows.Forms.TextBox();
-            this.gun5 = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.ogrt5 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txders5 = new System.Windows.Forms.TextBox();
-            this.saat1 = new System.Windows.Forms.ComboBox();
-            this.saat2 = new System.Windows.Forms.ComboBox();
-            this.saat3 = new System.Windows.Forms.ComboBox();
-            this.saat4 = new System.Windows.Forms.ComboBox();
-            this.saat5 = new System.Windows.Forms.ComboBox();
             this.sinif5 = new System.Windows.Forms.ComboBox();
             this.sinif4 = new System.Windows.Forms.ComboBox();
             this.sinif3 = new System.Windows.Forms.ComboBox();
@@ -93,6 +60,39 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.saat5 = new System.Windows.Forms.ComboBox();
+            this.saat4 = new System.Windows.Forms.ComboBox();
+            this.saat3 = new System.Windows.Forms.ComboBox();
+            this.saat2 = new System.Windows.Forms.ComboBox();
+            this.saat1 = new System.Windows.Forms.ComboBox();
+            this.gun5 = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ogrt5 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.gun4 = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txders5 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.ogrt4 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.gun3 = new System.Windows.Forms.ComboBox();
+            this.txders3 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ogrt3 = new System.Windows.Forms.TextBox();
+            this.txders2 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txders4 = new System.Windows.Forms.TextBox();
+            this.gun2 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ogrt2 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -106,15 +106,16 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // button1
+            // ekleBtn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(573, 233);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 50);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "EKLE";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ekleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ekleBtn.Location = new System.Drawing.Point(573, 233);
+            this.ekleBtn.Name = "ekleBtn";
+            this.ekleBtn.Size = new System.Drawing.Size(159, 50);
+            this.ekleBtn.TabIndex = 1;
+            this.ekleBtn.Text = "EKLE";
+            this.ekleBtn.UseVisualStyleBackColor = true;
+            this.ekleBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -372,367 +373,6 @@
             this.groupBox1.Text = "Girdi Alanı";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // gun2
-            // 
-            this.gun2.FormattingEnabled = true;
-            this.gun2.Items.AddRange(new object[] {
-            "Pazartesi\t",
-            "Sali\t",
-            "Carsamba",
-            "Persembe\t",
-            "Cuma"});
-            this.gun2.Location = new System.Drawing.Point(597, 65);
-            this.gun2.Name = "gun2";
-            this.gun2.Size = new System.Drawing.Size(100, 21);
-            this.gun2.TabIndex = 31;
-            this.gun2.Text = "Gün Seçiniz";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(177, 66);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 20);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Öğrt.:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(547, 65);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 20);
-            this.label9.TabIndex = 30;
-            this.label9.Text = "Gün:";
-            // 
-            // ogrt2
-            // 
-            this.ogrt2.Location = new System.Drawing.Point(234, 66);
-            this.ogrt2.Name = "ogrt2";
-            this.ogrt2.Size = new System.Drawing.Size(82, 20);
-            this.ogrt2.TabIndex = 25;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(14, 68);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 20);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "Ders:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.Location = new System.Drawing.Point(435, 66);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(52, 20);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "Saat:";
-            // 
-            // txders2
-            // 
-            this.txders2.Location = new System.Drawing.Point(71, 68);
-            this.txders2.Name = "txders2";
-            this.txders2.Size = new System.Drawing.Size(100, 20);
-            this.txders2.TabIndex = 27;
-            // 
-            // gun3
-            // 
-            this.gun3.FormattingEnabled = true;
-            this.gun3.Items.AddRange(new object[] {
-            "Pazartesi\t",
-            "Sali\t",
-            "Carsamba",
-            "Persembe\t",
-            "Cuma"});
-            this.gun3.Location = new System.Drawing.Point(597, 101);
-            this.gun3.Name = "gun3";
-            this.gun3.Size = new System.Drawing.Size(100, 21);
-            this.gun3.TabIndex = 39;
-            this.gun3.Text = "Gün Seçiniz";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(177, 102);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 20);
-            this.label12.TabIndex = 32;
-            this.label12.Text = "Öğrt.:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label13.Location = new System.Drawing.Point(547, 101);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(48, 20);
-            this.label13.TabIndex = 38;
-            this.label13.Text = "Gün:";
-            // 
-            // ogrt3
-            // 
-            this.ogrt3.Location = new System.Drawing.Point(234, 102);
-            this.ogrt3.Name = "ogrt3";
-            this.ogrt3.Size = new System.Drawing.Size(82, 20);
-            this.ogrt3.TabIndex = 33;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label14.Location = new System.Drawing.Point(14, 104);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(52, 20);
-            this.label14.TabIndex = 34;
-            this.label14.Text = "Ders:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label15.Location = new System.Drawing.Point(435, 102);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 20);
-            this.label15.TabIndex = 36;
-            this.label15.Text = "Saat:";
-            // 
-            // txders3
-            // 
-            this.txders3.Location = new System.Drawing.Point(71, 104);
-            this.txders3.Name = "txders3";
-            this.txders3.Size = new System.Drawing.Size(100, 20);
-            this.txders3.TabIndex = 35;
-            // 
-            // gun4
-            // 
-            this.gun4.FormattingEnabled = true;
-            this.gun4.Items.AddRange(new object[] {
-            "Pazartesi\t",
-            "Sali\t",
-            "Carsamba",
-            "Persembe\t",
-            "Cuma"});
-            this.gun4.Location = new System.Drawing.Point(597, 137);
-            this.gun4.Name = "gun4";
-            this.gun4.Size = new System.Drawing.Size(100, 21);
-            this.gun4.TabIndex = 47;
-            this.gun4.Text = "Gün Seçiniz";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label16.Location = new System.Drawing.Point(177, 138);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(54, 20);
-            this.label16.TabIndex = 40;
-            this.label16.Text = "Öğrt.:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label17.Location = new System.Drawing.Point(547, 137);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(48, 20);
-            this.label17.TabIndex = 46;
-            this.label17.Text = "Gün:";
-            // 
-            // ogrt4
-            // 
-            this.ogrt4.Location = new System.Drawing.Point(234, 138);
-            this.ogrt4.Name = "ogrt4";
-            this.ogrt4.Size = new System.Drawing.Size(82, 20);
-            this.ogrt4.TabIndex = 41;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label18.Location = new System.Drawing.Point(14, 140);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(52, 20);
-            this.label18.TabIndex = 42;
-            this.label18.Text = "Ders:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label19.Location = new System.Drawing.Point(435, 138);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(52, 20);
-            this.label19.TabIndex = 44;
-            this.label19.Text = "Saat:";
-            // 
-            // txders4
-            // 
-            this.txders4.Location = new System.Drawing.Point(71, 140);
-            this.txders4.Name = "txders4";
-            this.txders4.Size = new System.Drawing.Size(100, 20);
-            this.txders4.TabIndex = 43;
-            // 
-            // gun5
-            // 
-            this.gun5.FormattingEnabled = true;
-            this.gun5.Items.AddRange(new object[] {
-            "Pazartesi\t",
-            "Sali\t",
-            "Carsamba",
-            "Persembe\t",
-            "Cuma"});
-            this.gun5.Location = new System.Drawing.Point(597, 174);
-            this.gun5.Name = "gun5";
-            this.gun5.Size = new System.Drawing.Size(100, 21);
-            this.gun5.TabIndex = 55;
-            this.gun5.Text = "Gün Seçiniz";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label20.Location = new System.Drawing.Point(177, 175);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(54, 20);
-            this.label20.TabIndex = 48;
-            this.label20.Text = "Öğrt.:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label21.Location = new System.Drawing.Point(547, 174);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(48, 20);
-            this.label21.TabIndex = 54;
-            this.label21.Text = "Gün:";
-            // 
-            // ogrt5
-            // 
-            this.ogrt5.Location = new System.Drawing.Point(234, 175);
-            this.ogrt5.Name = "ogrt5";
-            this.ogrt5.Size = new System.Drawing.Size(82, 20);
-            this.ogrt5.TabIndex = 49;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label22.Location = new System.Drawing.Point(14, 177);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(52, 20);
-            this.label22.TabIndex = 50;
-            this.label22.Text = "Ders:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label23.Location = new System.Drawing.Point(435, 175);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(52, 20);
-            this.label23.TabIndex = 52;
-            this.label23.Text = "Saat:";
-            // 
-            // txders5
-            // 
-            this.txders5.Location = new System.Drawing.Point(71, 177);
-            this.txders5.Name = "txders5";
-            this.txders5.Size = new System.Drawing.Size(100, 20);
-            this.txders5.TabIndex = 51;
-            // 
-            // saat1
-            // 
-            this.saat1.FormattingEnabled = true;
-            this.saat1.Items.AddRange(new object[] {
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00"});
-            this.saat1.Location = new System.Drawing.Point(492, 30);
-            this.saat1.Name = "saat1";
-            this.saat1.Size = new System.Drawing.Size(52, 21);
-            this.saat1.TabIndex = 56;
-            // 
-            // saat2
-            // 
-            this.saat2.FormattingEnabled = true;
-            this.saat2.Items.AddRange(new object[] {
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00"});
-            this.saat2.Location = new System.Drawing.Point(492, 66);
-            this.saat2.Name = "saat2";
-            this.saat2.Size = new System.Drawing.Size(52, 21);
-            this.saat2.TabIndex = 57;
-            // 
-            // saat3
-            // 
-            this.saat3.FormattingEnabled = true;
-            this.saat3.Items.AddRange(new object[] {
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00"});
-            this.saat3.Location = new System.Drawing.Point(492, 101);
-            this.saat3.Name = "saat3";
-            this.saat3.Size = new System.Drawing.Size(52, 21);
-            this.saat3.TabIndex = 58;
-            // 
-            // saat4
-            // 
-            this.saat4.FormattingEnabled = true;
-            this.saat4.Items.AddRange(new object[] {
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00"});
-            this.saat4.Location = new System.Drawing.Point(492, 137);
-            this.saat4.Name = "saat4";
-            this.saat4.Size = new System.Drawing.Size(52, 21);
-            this.saat4.TabIndex = 59;
-            // 
-            // saat5
-            // 
-            this.saat5.FormattingEnabled = true;
-            this.saat5.Items.AddRange(new object[] {
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00"});
-            this.saat5.Location = new System.Drawing.Point(492, 174);
-            this.saat5.Name = "saat5";
-            this.saat5.Size = new System.Drawing.Size(52, 21);
-            this.saat5.TabIndex = 60;
-            // 
             // sinif5
             // 
             this.sinif5.FormattingEnabled = true;
@@ -853,6 +493,367 @@
             this.label28.TabIndex = 61;
             this.label28.Text = "Sınıf:";
             // 
+            // saat5
+            // 
+            this.saat5.FormattingEnabled = true;
+            this.saat5.Items.AddRange(new object[] {
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00"});
+            this.saat5.Location = new System.Drawing.Point(492, 174);
+            this.saat5.Name = "saat5";
+            this.saat5.Size = new System.Drawing.Size(52, 21);
+            this.saat5.TabIndex = 60;
+            // 
+            // saat4
+            // 
+            this.saat4.FormattingEnabled = true;
+            this.saat4.Items.AddRange(new object[] {
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00"});
+            this.saat4.Location = new System.Drawing.Point(492, 137);
+            this.saat4.Name = "saat4";
+            this.saat4.Size = new System.Drawing.Size(52, 21);
+            this.saat4.TabIndex = 59;
+            // 
+            // saat3
+            // 
+            this.saat3.FormattingEnabled = true;
+            this.saat3.Items.AddRange(new object[] {
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00"});
+            this.saat3.Location = new System.Drawing.Point(492, 101);
+            this.saat3.Name = "saat3";
+            this.saat3.Size = new System.Drawing.Size(52, 21);
+            this.saat3.TabIndex = 58;
+            // 
+            // saat2
+            // 
+            this.saat2.FormattingEnabled = true;
+            this.saat2.Items.AddRange(new object[] {
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00"});
+            this.saat2.Location = new System.Drawing.Point(492, 66);
+            this.saat2.Name = "saat2";
+            this.saat2.Size = new System.Drawing.Size(52, 21);
+            this.saat2.TabIndex = 57;
+            // 
+            // saat1
+            // 
+            this.saat1.FormattingEnabled = true;
+            this.saat1.Items.AddRange(new object[] {
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00"});
+            this.saat1.Location = new System.Drawing.Point(492, 30);
+            this.saat1.Name = "saat1";
+            this.saat1.Size = new System.Drawing.Size(52, 21);
+            this.saat1.TabIndex = 56;
+            // 
+            // gun5
+            // 
+            this.gun5.FormattingEnabled = true;
+            this.gun5.Items.AddRange(new object[] {
+            "Pazartesi\t",
+            "Sali\t",
+            "Carsamba",
+            "Persembe\t",
+            "Cuma"});
+            this.gun5.Location = new System.Drawing.Point(597, 174);
+            this.gun5.Name = "gun5";
+            this.gun5.Size = new System.Drawing.Size(100, 21);
+            this.gun5.TabIndex = 55;
+            this.gun5.Text = "Gün Seçiniz";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label20.Location = new System.Drawing.Point(177, 175);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(54, 20);
+            this.label20.TabIndex = 48;
+            this.label20.Text = "Öğrt.:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label21.Location = new System.Drawing.Point(547, 174);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(48, 20);
+            this.label21.TabIndex = 54;
+            this.label21.Text = "Gün:";
+            // 
+            // ogrt5
+            // 
+            this.ogrt5.Location = new System.Drawing.Point(234, 175);
+            this.ogrt5.Name = "ogrt5";
+            this.ogrt5.Size = new System.Drawing.Size(82, 20);
+            this.ogrt5.TabIndex = 49;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label22.Location = new System.Drawing.Point(14, 177);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(52, 20);
+            this.label22.TabIndex = 50;
+            this.label22.Text = "Ders:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label23.Location = new System.Drawing.Point(435, 175);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(52, 20);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "Saat:";
+            // 
+            // gun4
+            // 
+            this.gun4.FormattingEnabled = true;
+            this.gun4.Items.AddRange(new object[] {
+            "Pazartesi\t",
+            "Sali\t",
+            "Carsamba",
+            "Persembe\t",
+            "Cuma"});
+            this.gun4.Location = new System.Drawing.Point(597, 137);
+            this.gun4.Name = "gun4";
+            this.gun4.Size = new System.Drawing.Size(100, 21);
+            this.gun4.TabIndex = 47;
+            this.gun4.Text = "Gün Seçiniz";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label16.Location = new System.Drawing.Point(177, 138);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 20);
+            this.label16.TabIndex = 40;
+            this.label16.Text = "Öğrt.:";
+            // 
+            // txders5
+            // 
+            this.txders5.Location = new System.Drawing.Point(71, 177);
+            this.txders5.Name = "txders5";
+            this.txders5.Size = new System.Drawing.Size(100, 20);
+            this.txders5.TabIndex = 51;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label17.Location = new System.Drawing.Point(547, 137);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(48, 20);
+            this.label17.TabIndex = 46;
+            this.label17.Text = "Gün:";
+            // 
+            // ogrt4
+            // 
+            this.ogrt4.Location = new System.Drawing.Point(234, 138);
+            this.ogrt4.Name = "ogrt4";
+            this.ogrt4.Size = new System.Drawing.Size(82, 20);
+            this.ogrt4.TabIndex = 41;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label19.Location = new System.Drawing.Point(435, 138);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(52, 20);
+            this.label19.TabIndex = 44;
+            this.label19.Text = "Saat:";
+            // 
+            // gun3
+            // 
+            this.gun3.FormattingEnabled = true;
+            this.gun3.Items.AddRange(new object[] {
+            "Pazartesi\t",
+            "Sali\t",
+            "Carsamba",
+            "Persembe\t",
+            "Cuma"});
+            this.gun3.Location = new System.Drawing.Point(597, 101);
+            this.gun3.Name = "gun3";
+            this.gun3.Size = new System.Drawing.Size(100, 21);
+            this.gun3.TabIndex = 39;
+            this.gun3.Text = "Gün Seçiniz";
+            // 
+            // txders3
+            // 
+            this.txders3.Location = new System.Drawing.Point(71, 104);
+            this.txders3.Name = "txders3";
+            this.txders3.Size = new System.Drawing.Size(100, 20);
+            this.txders3.TabIndex = 35;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.Location = new System.Drawing.Point(177, 102);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 20);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Öğrt.:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label18.Location = new System.Drawing.Point(14, 140);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(52, 20);
+            this.label18.TabIndex = 42;
+            this.label18.Text = "Ders:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label13.Location = new System.Drawing.Point(547, 101);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 20);
+            this.label13.TabIndex = 38;
+            this.label13.Text = "Gün:";
+            // 
+            // ogrt3
+            // 
+            this.ogrt3.Location = new System.Drawing.Point(234, 102);
+            this.ogrt3.Name = "ogrt3";
+            this.ogrt3.Size = new System.Drawing.Size(82, 20);
+            this.ogrt3.TabIndex = 33;
+            // 
+            // txders2
+            // 
+            this.txders2.Location = new System.Drawing.Point(71, 68);
+            this.txders2.Name = "txders2";
+            this.txders2.Size = new System.Drawing.Size(100, 20);
+            this.txders2.TabIndex = 27;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label15.Location = new System.Drawing.Point(435, 102);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 20);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "Saat:";
+            // 
+            // txders4
+            // 
+            this.txders4.Location = new System.Drawing.Point(71, 140);
+            this.txders4.Name = "txders4";
+            this.txders4.Size = new System.Drawing.Size(100, 20);
+            this.txders4.TabIndex = 43;
+            // 
+            // gun2
+            // 
+            this.gun2.FormattingEnabled = true;
+            this.gun2.Items.AddRange(new object[] {
+            "Pazartesi\t",
+            "Sali\t",
+            "Carsamba",
+            "Persembe\t",
+            "Cuma"});
+            this.gun2.Location = new System.Drawing.Point(597, 65);
+            this.gun2.Name = "gun2";
+            this.gun2.Size = new System.Drawing.Size(100, 21);
+            this.gun2.TabIndex = 31;
+            this.gun2.Text = "Gün Seçiniz";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label10.Location = new System.Drawing.Point(14, 68);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 20);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "Ders:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label8.Location = new System.Drawing.Point(177, 66);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(54, 20);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Öğrt.:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label14.Location = new System.Drawing.Point(14, 104);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(52, 20);
+            this.label14.TabIndex = 34;
+            this.label14.Text = "Ders:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label9.Location = new System.Drawing.Point(547, 65);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 20);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Gün:";
+            // 
+            // ogrt2
+            // 
+            this.ogrt2.Location = new System.Drawing.Point(234, 66);
+            this.ogrt2.Name = "ogrt2";
+            this.ogrt2.Size = new System.Drawing.Size(82, 20);
+            this.ogrt2.TabIndex = 25;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.Location = new System.Drawing.Point(435, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(52, 20);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Saat:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -870,7 +871,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ekleBtn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -886,7 +887,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ekleBtn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
