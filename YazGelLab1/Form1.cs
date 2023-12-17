@@ -23,6 +23,8 @@ namespace YazGelLab1
     {
         SqlConnection connection;
         DataTable dersProgram = new DataTable();
+        // Veritabanı bağlantısı oluştur
+        public string connectionString = "Server=localhost;Database=yazlab1_2;Uid=root;Pwd=kubilay41;";
         public Form1()
         {
 
@@ -115,9 +117,20 @@ namespace YazGelLab1
         {
             bool conflict = false;
             HashSet<string> checkedTeachers = new HashSet<string>(); // Öğretmenleri kontrol etmek için bir küme
+            HashSet<string> checkedTeacherSlots = new HashSet<string>(); // Öğretmenlerin gün ve saatlerini kontrol etmek için bir küme
 
             foreach (Node node in graph.Nodes)
             {
+                string teacherKey = $"{node.Ogretmen}-{node.Gun}-{node.Saat}"; // Öğretmen, gün ve saat bilgisini birleştirerek bir anahtar oluştur
+
+                if (checkedTeacherSlots.Contains(teacherKey))
+                {
+                    conflict = true;
+                    break;
+                }
+
+                checkedTeacherSlots.Add(teacherKey);
+
                 HashSet<string> checkedNodes = new HashSet<string>(); // Kontrol edilen düğümleri saklamak için bir küme
 
                 string key = $"{node.Saat}-{node.Sinif}-{node.Gun}"; // Saat, sınıf ve günü birleştirerek bir anahtar oluştur
@@ -150,9 +163,54 @@ namespace YazGelLab1
 
             // Çakışma durumuna göre label3'ü güncelle
             label3.Text = conflict ? "Çakışma var" : "Çakışma yok";
-            if (conflict==false)
+            ekleBtn.Enabled = true;
+        }
+
+        private void GetDataFromDatabase()
+        {
+            try
             {
-                ekleBtn.Enabled = true;
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = @"
+                        SELECT Gun, Saat, DersAdi, Ogretmen, Sinif
+                        FROM dersprogrami
+                        ORDER BY
+                          CASE Gun
+                            WHEN 'Pazartesi' THEN 1
+                            WHEN 'Sali' THEN 2
+                            WHEN 'Carsamba' THEN 3
+                            WHEN 'Persembe' THEN 4
+                            WHEN 'Cuma' THEN 5
+                            ELSE 6
+                          END,
+                          CASE Saat
+                            WHEN '09:00' THEN 1
+                            WHEN '10:00' THEN 2
+                            WHEN '11:00' THEN 3
+                            WHEN '12:00' THEN 4
+                            WHEN '13:00' THEN 5
+                            WHEN '14:00' THEN 6
+                            WHEN '15:00' THEN 7
+                            WHEN '16:00' THEN 8
+                            ELSE 9
+                          END;
+                    ";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    derstbGrid.DataSource = dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veri yüklenirken bir hata oluştu: " + ex.Message);
             }
         }
 
@@ -179,11 +237,11 @@ namespace YazGelLab1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            GetDataFromDatabase();
             string query2 = @"";
 
-            dataGridView1.RowHeadersVisible = true;
-            dataGridView1.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
+            derstbGrid.RowHeadersVisible = true;
+            derstbGrid.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
 
             ekleBtn.Enabled = false;
 
@@ -205,6 +263,9 @@ namespace YazGelLab1
             Ders ders3 = new Ders(txders3.Text, ogrt3.Text, sinif3.Text, saat3.Text, gun3.Text);
             Ders ders4 = new Ders(txders4.Text, ogrt4.Text, sinif4.Text, saat4.Text, gun4.Text);
             Ders ders5 = new Ders(txders5.Text, ogrt5.Text, sinif5.Text, saat5.Text, gun5.Text);
+            Ders ders6 = new Ders(txders6.Text, ogrt6.Text, sinif6.Text, saat6.Text, gun6.Text);
+            Ders ders7 = new Ders(txders7.Text, ogrt7.Text, sinif7.Text, saat7.Text, gun7.Text);
+            Ders ders8 = new Ders(txders8.Text, ogrt8.Text, sinif8.Text, saat8.Text, gun8.Text);
 
 
             // Dersleri bir liste içinde toplamakodu
@@ -214,6 +275,9 @@ namespace YazGelLab1
             dersler.Add(ders3);
             dersler.Add(ders4);
             dersler.Add(ders5);
+            dersler.Add(ders6);
+            dersler.Add(ders7);
+            dersler.Add(ders8);
 
             Graph graph = new Graph();
 
@@ -243,9 +307,6 @@ namespace YazGelLab1
 
 
             CheckConflicts(graph);
-            listBox1.Items.Clear();
-            listBox1.Items.Add(graph.Nodes[0].DersAdi);
-            listBox1.Items.Add(graph.Nodes[1].DersAdi);
             graph.Clear();
             dersler.Clear();
         }
@@ -267,8 +328,7 @@ namespace YazGelLab1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Veritabanı bağlantısı oluştur
-            string connectionString = "Server=localhost;Database=yazlab1_2;Uid=root;Pwd=kubilay41;";
+            
 
             // DataTable oluştur
             DataTable dersProgram = new DataTable();
@@ -286,6 +346,9 @@ namespace YazGelLab1
             dersProgram.Rows.Add(txders3.Text, ogrt3.Text, sinif3.Text, saat3.Text, gun3.Text);
             dersProgram.Rows.Add(txders4.Text, ogrt4.Text, sinif4.Text, saat4.Text, gun4.Text);
             dersProgram.Rows.Add(txders5.Text, ogrt5.Text, sinif5.Text, saat5.Text, gun5.Text);
+            dersProgram.Rows.Add(txders6.Text, ogrt6.Text, sinif6.Text, saat6.Text, gun6.Text);
+            dersProgram.Rows.Add(txders7.Text, ogrt7.Text, sinif7.Text, saat7.Text, gun7.Text);
+            dersProgram.Rows.Add(txders8.Text, ogrt8.Text, sinif8.Text, saat8.Text, gun8.Text);
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -306,13 +369,17 @@ namespace YazGelLab1
                         insertCommand.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Veri başarıyla eklendi!");
+                    MessageBox.Show("Veriler başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // veriler gönderildikten sonra dataTable temizle
+                    dersProgram.Clear();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("İşlem sırasında hata oluştu: " + ex.Message);
+                    MessageBox.Show("İşlem sırasında hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
+            ekleBtn.Enabled = false;
 
         }
 
@@ -320,7 +387,11 @@ namespace YazGelLab1
         {
             
         }
-
+        private void tabloBtn_Click(object sender, EventArgs e)
+        {
+            derstbGrid.Refresh();
+            GetDataFromDatabase();
+        }
         
     }
 }
