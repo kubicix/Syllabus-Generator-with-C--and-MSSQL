@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using static YazGelLab1.Form1;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YazGelLab1
 {
@@ -214,7 +215,43 @@ namespace YazGelLab1
             }
         }
 
+        private void ExportToExcel(DataGridView dataGridView)
+        {
+            if (dataGridView.Rows.Count == 0)
+            {
+                MessageBox.Show("Aktarılacak veri bulunamadı.");
+                return;
+            }
 
+            try
+            {
+                Excel.Application excelApp = new Excel.Application();
+                excelApp.Application.Workbooks.Add(Type.Missing);
+                Excel.Worksheet excelWorksheet = (Excel.Worksheet)excelApp.ActiveSheet;
+
+                for (int i = 1; i < dataGridView.Columns.Count + 1; i++)
+                {
+                    excelWorksheet.Cells[1, i] = dataGridView.Columns[i - 1].HeaderText;
+                }
+
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataGridView.Columns.Count; j++)
+                    {
+                        object cellValue = dataGridView.Rows[i].Cells[j].Value;
+                        excelWorksheet.Cells[i + 2, j + 1] = cellValue != null ? cellValue.ToString() : string.Empty;
+
+                    }
+                }
+
+                excelApp.Columns.AutoFit();
+                excelApp.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Excel'e aktarım sırasında bir hata oluştu: " + ex.Message);
+            }
+        }
 
         public class Ders
         {
@@ -392,6 +429,38 @@ namespace YazGelLab1
             derstbGrid.Refresh();
             GetDataFromDatabase();
         }
-        
+
+        private void excelBtn_Click(object sender, EventArgs e)
+        {
+            ExportToExcel(derstbGrid);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string deleteQuery = "DELETE FROM dersprogrami";
+                    MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, connection);
+                    deleteCommand.ExecuteNonQuery();
+
+                    MessageBox.Show("Tablo temizlendi!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("İşlem sırasında hata oluştu: " + ex.Message);
+                }
+            }
+
+            // DataGridView içeriğini temizle
+            derstbGrid.DataSource = null;
+            derstbGrid.Rows.Clear();
+            derstbGrid.Columns.Clear();
+
+
+        }
     }
 }
