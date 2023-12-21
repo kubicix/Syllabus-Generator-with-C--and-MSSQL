@@ -116,22 +116,13 @@
             this.ogrt2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnTemizle = new System.Windows.Forms.Button();
             this.tabloBtn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.editSinif = new System.Windows.Forms.ComboBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.editSaat = new System.Windows.Forms.ComboBox();
-            this.editGun = new System.Windows.Forms.ComboBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.editOgrt = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.editDers = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnTemizle = new System.Windows.Forms.Button();
+            this.adminBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.derstbGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -142,6 +133,7 @@
             // 
             // derstbGrid
             // 
+            this.derstbGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.derstbGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.derstbGrid.Location = new System.Drawing.Point(12, 12);
             this.derstbGrid.Name = "derstbGrid";
@@ -1214,12 +1206,24 @@
             this.groupBox2.Controls.Add(this.btnTemizle);
             this.groupBox2.Controls.Add(this.tabloBtn);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox2.Location = new System.Drawing.Point(573, 373);
+            this.groupBox2.Location = new System.Drawing.Point(573, 315);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(171, 127);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kontrol Paneli";
+            // 
+            // btnTemizle
+            // 
+            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTemizle.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnTemizle.Location = new System.Drawing.Point(6, 71);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(159, 50);
+            this.btnTemizle.TabIndex = 11;
+            this.btnTemizle.Text = "TABLO TEMİZLE";
+            this.btnTemizle.UseVisualStyleBackColor = true;
+            this.btnTemizle.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // tabloBtn
             // 
@@ -1240,7 +1244,7 @@
             this.groupBox3.Controls.Add(this.ekleBtn);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox3.Location = new System.Drawing.Point(754, 373);
+            this.groupBox3.Location = new System.Drawing.Point(754, 315);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(306, 127);
             this.groupBox3.TabIndex = 26;
@@ -1250,138 +1254,14 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.groupBox4.Controls.Add(this.editSinif);
-            this.groupBox4.Controls.Add(this.label42);
-            this.groupBox4.Controls.Add(this.editSaat);
-            this.groupBox4.Controls.Add(this.editGun);
-            this.groupBox4.Controls.Add(this.label43);
-            this.groupBox4.Controls.Add(this.label44);
-            this.groupBox4.Controls.Add(this.editOgrt);
-            this.groupBox4.Controls.Add(this.label45);
-            this.groupBox4.Controls.Add(this.label46);
-            this.groupBox4.Controls.Add(this.editDers);
+            this.groupBox4.Controls.Add(this.adminBtn);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox4.Location = new System.Drawing.Point(573, 320);
+            this.groupBox4.Location = new System.Drawing.Point(573, 448);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(697, 47);
             this.groupBox4.TabIndex = 27;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Düzenleme Paneli";
-            // 
-            // editSinif
-            // 
-            this.editSinif.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.editSinif.FormattingEnabled = true;
-            this.editSinif.Items.AddRange(new object[] {
-            "1033",
-            "1036",
-            "1040",
-            "1041",
-            "1044"});
-            this.editSinif.Location = new System.Drawing.Point(370, 20);
-            this.editSinif.Name = "editSinif";
-            this.editSinif.Size = new System.Drawing.Size(52, 21);
-            this.editSinif.TabIndex = 110;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label42.Location = new System.Drawing.Point(314, 21);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(50, 20);
-            this.label42.TabIndex = 109;
-            this.label42.Text = "Sınıf:";
-            // 
-            // editSaat
-            // 
-            this.editSaat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.editSaat.FormattingEnabled = true;
-            this.editSaat.Items.AddRange(new object[] {
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00"});
-            this.editSaat.Location = new System.Drawing.Point(486, 19);
-            this.editSaat.Name = "editSaat";
-            this.editSaat.Size = new System.Drawing.Size(52, 21);
-            this.editSaat.TabIndex = 108;
-            // 
-            // editGun
-            // 
-            this.editGun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.editGun.FormattingEnabled = true;
-            this.editGun.Items.AddRange(new object[] {
-            "Pazartesi\t",
-            "Sali\t",
-            "Carsamba",
-            "Persembe\t",
-            "Cuma"});
-            this.editGun.Location = new System.Drawing.Point(591, 19);
-            this.editGun.Name = "editGun";
-            this.editGun.Size = new System.Drawing.Size(100, 21);
-            this.editGun.TabIndex = 107;
-            this.editGun.Text = "Gün Seçiniz";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label43.Location = new System.Drawing.Point(171, 20);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(54, 20);
-            this.label43.TabIndex = 101;
-            this.label43.Text = "Öğrt.:";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label44.Location = new System.Drawing.Point(541, 19);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(48, 20);
-            this.label44.TabIndex = 106;
-            this.label44.Text = "Gün:";
-            // 
-            // editOgrt
-            // 
-            this.editOgrt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.editOgrt.Location = new System.Drawing.Point(228, 20);
-            this.editOgrt.Name = "editOgrt";
-            this.editOgrt.Size = new System.Drawing.Size(82, 20);
-            this.editOgrt.TabIndex = 102;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label45.Location = new System.Drawing.Point(8, 22);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(52, 20);
-            this.label45.TabIndex = 103;
-            this.label45.Text = "Ders:";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label46.Location = new System.Drawing.Point(429, 20);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(52, 20);
-            this.label46.TabIndex = 105;
-            this.label46.Text = "Saat:";
-            // 
-            // editDers
-            // 
-            this.editDers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.editDers.Location = new System.Drawing.Point(65, 22);
-            this.editDers.Name = "editDers";
-            this.editDers.Size = new System.Drawing.Size(100, 20);
-            this.editDers.TabIndex = 104;
+            this.groupBox4.Text = "Admin Panel Girişi";
             // 
             // groupBox5
             // 
@@ -1389,12 +1269,12 @@
             this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Controls.Add(this.excelBtn);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox5.Location = new System.Drawing.Point(1066, 373);
+            this.groupBox5.Location = new System.Drawing.Point(1066, 315);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(212, 127);
             this.groupBox5.TabIndex = 28;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Kontrol Paneli";
+            this.groupBox5.Text = "Aktarma Paneli";
             // 
             // button1
             // 
@@ -1406,18 +1286,19 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "PDF AKTAR";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // btnTemizle
+            // adminBtn
             // 
-            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTemizle.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnTemizle.Location = new System.Drawing.Point(6, 71);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(159, 50);
-            this.btnTemizle.TabIndex = 11;
-            this.btnTemizle.Text = "TABLO TEMİZLE";
-            this.btnTemizle.UseVisualStyleBackColor = true;
-            this.btnTemizle.Click += new System.EventHandler(this.button2_Click_1);
+            this.adminBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.adminBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.adminBtn.Location = new System.Drawing.Point(6, 14);
+            this.adminBtn.Name = "adminBtn";
+            this.adminBtn.Size = new System.Drawing.Size(685, 27);
+            this.adminBtn.TabIndex = 0;
+            this.adminBtn.Text = "ADMİN PANELE GİRİŞ YAP";
+            this.adminBtn.UseVisualStyleBackColor = false;
+            this.adminBtn.Click += new System.EventHandler(this.adminBtn_Click);
             // 
             // Form1
             // 
@@ -1441,7 +1322,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1539,19 +1419,10 @@
         private System.Windows.Forms.Button tabloBtn;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox editSinif;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.ComboBox editSaat;
-        private System.Windows.Forms.ComboBox editGun;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.TextBox editOgrt;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.TextBox editDers;
         private System.Windows.Forms.Button btnTemizle;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button adminBtn;
     }
 }
 

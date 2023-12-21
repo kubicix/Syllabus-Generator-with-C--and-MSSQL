@@ -164,7 +164,7 @@ namespace YazGelLab1
 
             // Çakışma durumuna göre label3'ü güncelle
             label3.Text = conflict ? "Çakışma var" : "Çakışma yok";
-            ekleBtn.Enabled = true;
+            ekleBtn.Enabled = conflict ? false : true;
         }
 
         private void GetDataFromDatabase()
@@ -417,6 +417,7 @@ namespace YazGelLab1
                 }
             }
             ekleBtn.Enabled = false;
+            GetDataFromDatabase();
 
         }
 
@@ -437,29 +438,50 @@ namespace YazGelLab1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            DialogResult result = MessageBox.Show("Tabloyu temizlemek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                try
-                {
-                    connection.Open();
+                string connectionString = "Server=localhost;Database=yazlab1_2;Uid=root;Pwd=kubilay41;";
 
-                    string deleteQuery = "DELETE FROM dersprogrami";
-                    MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, connection);
-                    deleteCommand.ExecuteNonQuery();
-
-                    MessageBox.Show("Tablo temizlendi!");
-                }
-                catch (Exception ex)
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    MessageBox.Show("İşlem sırasında hata oluştu: " + ex.Message);
+                    try
+                    {
+                        connection.Open();
+
+                        string clearQuery = "DELETE FROM dersprogrami";
+                        MySqlCommand clearCommand = new MySqlCommand(clearQuery, connection);
+
+                        clearCommand.ExecuteNonQuery();
+
+                        MessageBox.Show("Tablo başarıyla temizlendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // DataGridView içeriğini temizle
+                        derstbGrid.DataSource = null;
+                        derstbGrid.Rows.Clear();
+                        derstbGrid.Columns.Clear();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("İşlem sırasında hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
 
-            // DataGridView içeriğini temizle
-            derstbGrid.DataSource = null;
-            derstbGrid.Rows.Clear();
-            derstbGrid.Columns.Clear();
+            
 
+
+        }
+      
+
+        private void adminBtn_Click(object sender, EventArgs e)
+        {
+            Form2 admin = new Form2();
+            admin.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
 
         }
     }
