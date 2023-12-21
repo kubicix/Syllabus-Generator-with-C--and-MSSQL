@@ -15,6 +15,9 @@ using static YazGelLab1.Form1;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace YazGelLab1
 {
@@ -253,6 +256,41 @@ namespace YazGelLab1
             }
         }
 
+        private void ExportToPdf(DataGridView dataGridView, string filePath)
+        {
+            Document document = new Document();
+            PdfPTable pdfTable = new PdfPTable(dataGridView.Columns.Count);
+
+            // PDF tablo başlıklarını ayarla
+            for (int i = 0; i < dataGridView.Columns.Count; i++)
+            {
+                pdfTable.AddCell(dataGridView.Columns[i].HeaderText);
+            }
+
+            // DataGridView'den verileri PDF tabloya aktar
+            for (int row = 0; row < dataGridView.Rows.Count; row++)
+            {
+                for (int cell = 0; cell < dataGridView.Columns.Count; cell++)
+                {
+                    if (dataGridView[cell, row].Value != null)
+                    {
+                        pdfTable.AddCell(dataGridView[cell, row].Value.ToString());
+                    }
+                }
+            }
+
+            // PDF dosyasını oluştur ve kaydet
+            using (FileStream stream = new FileStream(filePath, FileMode.Create))
+            {
+                PdfWriter writer = PdfWriter.GetInstance(document, stream);
+                document.Open();
+                document.Add(pdfTable);
+                document.Close();
+                writer.Close();
+                stream.Close();
+            }
+        }
+
         public class Ders
         {
             public string DersAdi { get; set; }
@@ -275,7 +313,6 @@ namespace YazGelLab1
         private void Form1_Load(object sender, EventArgs e)
         {
             GetDataFromDatabase();
-            string query2 = @"";
 
             derstbGrid.RowHeadersVisible = true;
             derstbGrid.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
@@ -289,8 +326,7 @@ namespace YazGelLab1
 
         }
 
-
-        private void button6_Click(object sender, EventArgs e)
+        private void kontrolBtn_Click(object sender, EventArgs e)
         {
 
 
@@ -340,13 +376,11 @@ namespace YazGelLab1
                     }
                 }
             }
-
-
-
             CheckConflicts(graph);
             graph.Clear();
             dersler.Clear();
         }
+        
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -363,9 +397,10 @@ namespace YazGelLab1
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void ekleBtn_Click(object sender, EventArgs e)
         {
-            
+
 
             // DataTable oluştur
             DataTable dersProgram = new DataTable();
@@ -436,7 +471,7 @@ namespace YazGelLab1
             ExportToExcel(derstbGrid);
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void btnTemizle_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Tabloyu temizlemek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -468,11 +503,8 @@ namespace YazGelLab1
                 }
             }
 
-            
-
-
         }
-      
+
 
         private void adminBtn_Click(object sender, EventArgs e)
         {
@@ -480,9 +512,17 @@ namespace YazGelLab1
             admin.Show();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        
+        private void pdfbtn_Click(object sender, EventArgs e)
         {
-
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "PDF files (.pdf)|.pdf";
+            saveDialog.FileName = "DersProgrami.pdf";
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExportToPdf(derstbGrid, saveDialog.FileName);
+                MessageBox.Show("PDF dosyası oluşturuldu ve kaydedildi.");
+            }
         }
     }
 }

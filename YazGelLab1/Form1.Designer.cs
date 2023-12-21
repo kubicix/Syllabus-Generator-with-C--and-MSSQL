@@ -33,7 +33,7 @@
             this.ekleBtn = new System.Windows.Forms.Button();
             this.excelBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.kontrolBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.ogrt1 = new System.Windows.Forms.TextBox();
             this.txders1 = new System.Windows.Forms.TextBox();
@@ -120,9 +120,9 @@
             this.tabloBtn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.adminBtn = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.pdfbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.derstbGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -152,7 +152,7 @@
             this.ekleBtn.TabIndex = 1;
             this.ekleBtn.Text = "DATABASE AKTAR";
             this.ekleBtn.UseVisualStyleBackColor = false;
-            this.ekleBtn.Click += new System.EventHandler(this.button1_Click);
+            this.ekleBtn.Click += new System.EventHandler(this.ekleBtn_Click);
             // 
             // excelBtn
             // 
@@ -177,16 +177,16 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "------------";
             // 
-            // button6
+            // kontrolBtn
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button6.Location = new System.Drawing.Point(6, 19);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(158, 47);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "KONTROL";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.kontrolBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.kontrolBtn.Location = new System.Drawing.Point(6, 19);
+            this.kontrolBtn.Name = "kontrolBtn";
+            this.kontrolBtn.Size = new System.Drawing.Size(158, 47);
+            this.kontrolBtn.TabIndex = 15;
+            this.kontrolBtn.Text = "KONTROL";
+            this.kontrolBtn.UseVisualStyleBackColor = true;
+            this.kontrolBtn.Click += new System.EventHandler(this.kontrolBtn_Click);
             // 
             // label4
             // 
@@ -1223,7 +1223,7 @@
             this.btnTemizle.TabIndex = 11;
             this.btnTemizle.Text = "TABLO TEMİZLE";
             this.btnTemizle.UseVisualStyleBackColor = true;
-            this.btnTemizle.Click += new System.EventHandler(this.button2_Click_1);
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
             // tabloBtn
             // 
@@ -1240,7 +1240,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.LightCyan;
-            this.groupBox3.Controls.Add(this.button6);
+            this.groupBox3.Controls.Add(this.kontrolBtn);
             this.groupBox3.Controls.Add(this.ekleBtn);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -1263,31 +1263,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Admin Panel Girişi";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.groupBox5.Controls.Add(this.button1);
-            this.groupBox5.Controls.Add(this.excelBtn);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox5.Location = new System.Drawing.Point(1066, 315);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(212, 127);
-            this.groupBox5.TabIndex = 28;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Aktarma Paneli";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.Color.Brown;
-            this.button1.Location = new System.Drawing.Point(6, 72);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 50);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "PDF AKTAR";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // adminBtn
             // 
             this.adminBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -1299,6 +1274,31 @@
             this.adminBtn.Text = "ADMİN PANELE GİRİŞ YAP";
             this.adminBtn.UseVisualStyleBackColor = false;
             this.adminBtn.Click += new System.EventHandler(this.adminBtn_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.groupBox5.Controls.Add(this.pdfbtn);
+            this.groupBox5.Controls.Add(this.excelBtn);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox5.Location = new System.Drawing.Point(1066, 315);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(212, 127);
+            this.groupBox5.TabIndex = 28;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Aktarma Paneli";
+            // 
+            // pdfbtn
+            // 
+            this.pdfbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.pdfbtn.ForeColor = System.Drawing.Color.Brown;
+            this.pdfbtn.Location = new System.Drawing.Point(6, 72);
+            this.pdfbtn.Name = "pdfbtn";
+            this.pdfbtn.Size = new System.Drawing.Size(200, 50);
+            this.pdfbtn.TabIndex = 10;
+            this.pdfbtn.Text = "PDF AKTAR";
+            this.pdfbtn.UseVisualStyleBackColor = true;
+            this.pdfbtn.Click += new System.EventHandler(this.pdfbtn_Click);
             // 
             // Form1
             // 
@@ -1333,7 +1333,7 @@
         private System.Windows.Forms.Button ekleBtn;
         private System.Windows.Forms.Button excelBtn;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button kontrolBtn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox ogrt1;
         private System.Windows.Forms.TextBox txders1;
@@ -1421,7 +1421,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnTemizle;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button pdfbtn;
         private System.Windows.Forms.Button adminBtn;
     }
 }
