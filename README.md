@@ -34,7 +34,7 @@ This Syllabus Generator is designed to streamline the creation and management of
 
 1. Clone this repository.
 2. Open the solution file in Visual Studio.
-3. Configure the MySQL database connection settings.
+3. Configure the MySQL database connection settings and don't forget to update the connection string with your database user credentials.
 4. Build and run the application.
 
 ## Usage 🚀
