@@ -104,14 +104,8 @@ namespace YazGelLab1
             }
             public void Clear()
             {
-                Nodes.Clear(); // Tüm düğümleri temizle
-                               // Kenarları (edges) da temizlemek isterseniz, Node sınıfında bir List<Edge> tanımlamış olmanız gerekebilir.
-                               // Eğer böyle bir yapınız yoksa, kenarları da düğümlerle birlikte bir listeye ekleyerek onları da temizleyebilirsiniz.
-                               // Örnek olarak:
-                               // foreach (Node node in Nodes)
-                               // {
-                               //     node.Neighbors.Clear(); // Düğümün komşularını temizle
-                               // }
+                Nodes.Clear(); 
+                
             }
         }
 
@@ -139,11 +133,11 @@ namespace YazGelLab1
 
                 string key = $"{node.Saat}-{node.Sinif}-{node.Gun}"; // Saat, sınıf ve günü birleştirerek bir anahtar oluştur
 
-                if (checkedNodes.Contains(key) && checkedTeachers.Contains(node.Ogretmen))
-                {
-                    conflict = true;
-                    break;
-                }
+                //if (checkedNodes.Contains(key) && checkedTeachers.Contains(node.Ogretmen))
+                //{
+                //    conflict = true;
+                //    break;
+                //}
 
                 checkedNodes.Add(key);
                 checkedTeachers.Add(node.Ogretmen);
@@ -152,7 +146,7 @@ namespace YazGelLab1
                 {
                     Node neighborNode = edge.Source == node ? edge.Target : edge.Source;
 
-                    string neighborKey = $"{neighborNode.Saat}-{neighborNode.Sinif}-{neighborNode.Gun}"; // Öğretmen, saat, sınıf ve günü birleştirerek bir anahtar oluştur
+                    string neighborKey = $"{neighborNode.Saat}-{neighborNode.Sinif}-{neighborNode.Gun}"; // Saat, sınıf ve günü birleştirerek bir komşu anahtarı oluştur
 
                     if (key == neighborKey)
                     {
@@ -168,6 +162,39 @@ namespace YazGelLab1
             // Çakışma durumuna göre label3'ü güncelle
             label3.Text = conflict ? "Çakışma var" : "Çakışma yok";
             ekleBtn.Enabled = conflict ? false : true;
+        }
+
+        private void ClearDatabase()
+        {
+            DialogResult result = MessageBox.Show("Tabloyu temizlemek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string connectionString = "Server=localhost;Database=yazlab1_2;Uid=root;Pwd=kubilay41;";
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    try
+                    {
+                        connection.Open();
+
+                        string clearQuery = "DELETE FROM dersprogrami";
+                        MySqlCommand clearCommand = new MySqlCommand(clearQuery, connection);
+
+                        clearCommand.ExecuteNonQuery();
+
+                        MessageBox.Show("Tablo başarıyla temizlendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // DataGridView içeriğini temizle
+                        derstbGrid.DataSource = null;
+                        derstbGrid.Rows.Clear();
+                        derstbGrid.Columns.Clear();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("İşlem sırasında hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void GetDataFromDatabase()
@@ -473,35 +500,7 @@ namespace YazGelLab1
 
         private void btnTemizle_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Tabloyu temizlemek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                string connectionString = "Server=localhost;Database=yazlab1_2;Uid=root;Pwd=kubilay41;";
-
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    try
-                    {
-                        connection.Open();
-
-                        string clearQuery = "DELETE FROM dersprogrami";
-                        MySqlCommand clearCommand = new MySqlCommand(clearQuery, connection);
-
-                        clearCommand.ExecuteNonQuery();
-
-                        MessageBox.Show("Tablo başarıyla temizlendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // DataGridView içeriğini temizle
-                        derstbGrid.DataSource = null;
-                        derstbGrid.Rows.Clear();
-                        derstbGrid.Columns.Clear();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("İşlem sırasında hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
+            ClearDatabase();
 
         }
 

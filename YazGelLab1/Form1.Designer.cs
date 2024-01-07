@@ -258,7 +258,7 @@
             this.gun1.Name = "gun1";
             this.gun1.Size = new System.Drawing.Size(100, 21);
             this.gun1.TabIndex = 23;
-            this.gun1.Text = "Gün Seçiniz";
+            this.gun1.Text = "Pazartesi";
             // 
             // groupBox1
             // 
@@ -366,6 +366,7 @@
             this.sinif8.Name = "sinif8";
             this.sinif8.Size = new System.Drawing.Size(52, 21);
             this.sinif8.TabIndex = 100;
+            this.sinif8.Text = "1033";
             // 
             // label37
             // 
@@ -394,6 +395,7 @@
             this.saat8.Name = "saat8";
             this.saat8.Size = new System.Drawing.Size(52, 21);
             this.saat8.TabIndex = 98;
+            this.saat8.Text = "16:00";
             // 
             // gun8
             // 
@@ -409,7 +411,7 @@
             this.gun8.Name = "gun8";
             this.gun8.Size = new System.Drawing.Size(100, 21);
             this.gun8.TabIndex = 97;
-            this.gun8.Text = "Gün Seçiniz";
+            this.gun8.Text = "Pazartesi";
             // 
             // label38
             // 
@@ -481,6 +483,7 @@
             this.sinif7.Name = "sinif7";
             this.sinif7.Size = new System.Drawing.Size(52, 21);
             this.sinif7.TabIndex = 90;
+            this.sinif7.Text = "1033";
             // 
             // label32
             // 
@@ -509,6 +512,7 @@
             this.saat7.Name = "saat7";
             this.saat7.Size = new System.Drawing.Size(52, 21);
             this.saat7.TabIndex = 88;
+            this.saat7.Text = "15:00";
             // 
             // gun7
             // 
@@ -524,7 +528,7 @@
             this.gun7.Name = "gun7";
             this.gun7.Size = new System.Drawing.Size(100, 21);
             this.gun7.TabIndex = 87;
-            this.gun7.Text = "Gün Seçiniz";
+            this.gun7.Text = "Pazartesi";
             // 
             // label33
             // 
@@ -596,6 +600,7 @@
             this.sinif6.Name = "sinif6";
             this.sinif6.Size = new System.Drawing.Size(52, 21);
             this.sinif6.TabIndex = 80;
+            this.sinif6.Text = "1033";
             // 
             // label1
             // 
@@ -624,6 +629,7 @@
             this.saat6.Name = "saat6";
             this.saat6.Size = new System.Drawing.Size(52, 21);
             this.saat6.TabIndex = 78;
+            this.saat6.Text = "14:00";
             // 
             // gun6
             // 
@@ -639,7 +645,7 @@
             this.gun6.Name = "gun6";
             this.gun6.Size = new System.Drawing.Size(100, 21);
             this.gun6.TabIndex = 77;
-            this.gun6.Text = "Gün Seçiniz";
+            this.gun6.Text = "Pazartesi";
             // 
             // label2
             // 
@@ -711,6 +717,7 @@
             this.sinif5.Name = "sinif5";
             this.sinif5.Size = new System.Drawing.Size(52, 21);
             this.sinif5.TabIndex = 70;
+            this.sinif5.Text = "1033";
             // 
             // sinif4
             // 
@@ -726,6 +733,7 @@
             this.sinif4.Name = "sinif4";
             this.sinif4.Size = new System.Drawing.Size(52, 21);
             this.sinif4.TabIndex = 69;
+            this.sinif4.Text = "1033";
             // 
             // sinif3
             // 
@@ -741,6 +749,7 @@
             this.sinif3.Name = "sinif3";
             this.sinif3.Size = new System.Drawing.Size(52, 21);
             this.sinif3.TabIndex = 68;
+            this.sinif3.Text = "1033";
             // 
             // sinif2
             // 
@@ -756,6 +765,7 @@
             this.sinif2.Name = "sinif2";
             this.sinif2.Size = new System.Drawing.Size(52, 21);
             this.sinif2.TabIndex = 67;
+            this.sinif2.Text = "1033";
             // 
             // sinif1
             // 
@@ -771,6 +781,7 @@
             this.sinif1.Name = "sinif1";
             this.sinif1.Size = new System.Drawing.Size(52, 21);
             this.sinif1.TabIndex = 66;
+            this.sinif1.Text = "1033";
             // 
             // label24
             // 
@@ -839,6 +850,7 @@
             this.saat5.Name = "saat5";
             this.saat5.Size = new System.Drawing.Size(52, 21);
             this.saat5.TabIndex = 60;
+            this.saat5.Text = "13:00";
             // 
             // saat4
             // 
@@ -857,6 +869,7 @@
             this.saat4.Name = "saat4";
             this.saat4.Size = new System.Drawing.Size(52, 21);
             this.saat4.TabIndex = 59;
+            this.saat4.Text = "12:00";
             // 
             // saat3
             // 
@@ -875,6 +888,7 @@
             this.saat3.Name = "saat3";
             this.saat3.Size = new System.Drawing.Size(52, 21);
             this.saat3.TabIndex = 58;
+            this.saat3.Text = "11:00";
             // 
             // saat2
             // 
@@ -893,6 +907,7 @@
             this.saat2.Name = "saat2";
             this.saat2.Size = new System.Drawing.Size(52, 21);
             this.saat2.TabIndex = 57;
+            this.saat2.Text = "10:00";
             // 
             // saat1
             // 
@@ -911,6 +926,7 @@
             this.saat1.Name = "saat1";
             this.saat1.Size = new System.Drawing.Size(52, 21);
             this.saat1.TabIndex = 56;
+            this.saat1.Text = "09:00";
             // 
             // gun5
             // 
@@ -926,7 +942,7 @@
             this.gun5.Name = "gun5";
             this.gun5.Size = new System.Drawing.Size(100, 21);
             this.gun5.TabIndex = 55;
-            this.gun5.Text = "Gün Seçiniz";
+            this.gun5.Text = "Pazartesi";
             // 
             // label20
             // 
@@ -990,7 +1006,7 @@
             this.gun4.Name = "gun4";
             this.gun4.Size = new System.Drawing.Size(100, 21);
             this.gun4.TabIndex = 47;
-            this.gun4.Text = "Gün Seçiniz";
+            this.gun4.Text = "Pazartesi";
             // 
             // label16
             // 
@@ -1052,7 +1068,7 @@
             this.gun3.Name = "gun3";
             this.gun3.Size = new System.Drawing.Size(100, 21);
             this.gun3.TabIndex = 39;
-            this.gun3.Text = "Gün Seçiniz";
+            this.gun3.Text = "Pazartesi";
             // 
             // txders3
             // 
@@ -1140,7 +1156,7 @@
             this.gun2.Name = "gun2";
             this.gun2.Size = new System.Drawing.Size(100, 21);
             this.gun2.TabIndex = 31;
-            this.gun2.Text = "Gün Seçiniz";
+            this.gun2.Text = "Pazartesi";
             // 
             // label10
             // 
